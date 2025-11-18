@@ -1,0 +1,306 @@
+{
+  "address": "8N5ugPhfbeMakrLqnqoAFHnVdWwjGLWMrQZSw9Ajathk",
+  "metadata": {
+    "name": "task_manager",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "add_task",
+      "discriminator": [
+        234,
+        40,
+        30,
+        119,
+        150,
+        53,
+        76,
+        83
+      ],
+      "accounts": [
+        {
+          "name": "task_list",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  97,
+                  115,
+                  107,
+                  95,
+                  108,
+                  105,
+                  115,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "complete_task",
+      "discriminator": [
+        109,
+        167,
+        192,
+        41,
+        129,
+        108,
+        220,
+        196
+      ],
+      "accounts": [
+        {
+          "name": "task_list",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  97,
+                  115,
+                  107,
+                  95,
+                  108,
+                  105,
+                  115,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "task_id",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "delete_task",
+      "discriminator": [
+        112,
+        220,
+        10,
+        109,
+        3,
+        168,
+        46,
+        73
+      ],
+      "accounts": [
+        {
+          "name": "task_list",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  97,
+                  115,
+                  107,
+                  95,
+                  108,
+                  105,
+                  115,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "task_id",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "task_list",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  97,
+                  115,
+                  107,
+                  95,
+                  108,
+                  105,
+                  115,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "TaskList",
+      "discriminator": [
+        194,
+        145,
+        32,
+        133,
+        97,
+        216,
+        246,
+        198
+      ],
+      "size": 8572
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "DescriptionTooLong",
+      "msg": "Description is too long. Maximum 200 characters."
+    },
+    {
+      "code": 6001,
+      "name": "TooManyTasks",
+      "msg": "Maximum number of tasks (40) reached."
+    },
+    {
+      "code": 6002,
+      "name": "TaskNotFound",
+      "msg": "Task not found."
+    },
+    {
+      "code": 6003,
+      "name": "TaskAlreadyCompleted",
+      "msg": "Task is already completed."
+    },
+    {
+      "code": 6004,
+      "name": "Unauthorized",
+      "msg": "Unauthorized: Only the owner can perform this action."
+    }
+  ],
+  "types": [
+    {
+      "name": "Task",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "completed",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TaskList",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "task_count",
+            "type": "u64"
+          },
+          {
+            "name": "tasks",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "Task"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

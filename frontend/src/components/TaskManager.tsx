@@ -499,7 +499,7 @@ const decodeTaskListData = (data: Buffer): TaskList => {
                     <div className="task-actions">
                       {!task.completed && (
                         <button
-                          onClick={() => completeTask(task.id)}
+                          onClick={() => completeTask(new BN(index))}
                           disabled={loading}
                           className="btn btn-success"
                         >
@@ -507,7 +507,7 @@ const decodeTaskListData = (data: Buffer): TaskList => {
                         </button>
                       )}
                       <button
-                        onClick={() => deleteTask(task.id)}
+                        onClick={() => deleteTask(new BN(index))}
                         disabled={loading}
                         className="btn btn-danger"
                       >

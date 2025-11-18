@@ -1,6 +1,6 @@
 # Project Description
 
-**Deployed Frontend URL:** [TODO: Link to your deployed frontend - Deploy to Vercel/Netlify after completing setup]
+**Deployed Frontend URL:** https://taskmanager-qigvyxftb-ke7haavs-projects.vercel.app/
 
 **Solana Program ID:** `8N5ugPhfbeMakrLqnqoAFHnVdWwjGLWMrQZSw9Ajathk`
 
@@ -29,7 +29,7 @@ The application allows users to:
 ### How to Use the dApp
 
 1. **Connect Wallet**
-   - Click the "Select Wallet" button in the top right
+   - Click the "Select Wallet" button
    - Choose Phantom, Solflare, or another supported Solana wallet
    - Approve the connection request
 
